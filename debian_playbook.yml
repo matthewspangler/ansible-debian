@@ -115,15 +115,3 @@
 
     - name: Merge Xresources
       shell: xrdb -merge ./Xresources
-
-    - name: Add non-free repository
-      shell:
-
-    - name: Install steam
-      become: yes
-      become_method: enable
-      shell: dpkg --add-architecture i386
-      apt:
-        update_cache: yes
-        name:
-          - steam
