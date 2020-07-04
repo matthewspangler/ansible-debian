@@ -98,17 +98,9 @@
     - name: Setup vim by running PlugInstall
       shell: vim  +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
 
-    - name: Prepare youcompleteme for build
-      shell: git submodule update --init --recursive
-      args:
-        chdir: ~/vim/plugged/youcompleteme
-
-    - name: Build youcompleteme
-      shell: python3 install.py --clang-completer --cs-completer
-      args:
-        chdir: ~/vim/plugged/youcompleteme
-
     - name: Setup zsh to be default shell
+      become: yes
+      become_method: sudo
       shell: chsh -s $(which zsh)
 
     - name: Install NordVPN repository
@@ -126,6 +118,3 @@
 
     - name: Run pywal and pywpg
       shell: ~/set_background.sh ~/Pictures/Backgrounds/default.jpg
-
-    - name: Merge Xresources
-      shell: xrdb -merge ./Xresources
