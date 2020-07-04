@@ -95,9 +95,6 @@
     - name: Install dotfiles
       shell: cd ~ && git clone https://github.com/matthewspangler/dotfiles && cd dotfiles && ./install
 
-    - name: Setup vim by running PlugInstall
-      shell: vim  +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
-
     - name: Setup zsh to be default shell
       become: yes
       become_method: sudo
