@@ -95,7 +95,7 @@
       shell: cd ~ && git clone https://github.com/matthewspangler/dotfiles && cd dotfiles && ./install
 
     - name: Setup vim by running PlugInstall
-      shell: vim  +PlugInstall +qall
+      shell: vim  +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
 
     - name: Build youcompleteme
       shell: cd ~/.vim/plugged/youcompleteme/ && python3 install.py --clang-completer --cs-completer
