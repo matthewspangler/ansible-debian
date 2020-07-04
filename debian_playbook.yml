@@ -47,6 +47,7 @@
           - network-manager-openvpn-gnome
           - xscreensaver
           - pasystray
+          - imagemagick
 
     - name: Install development tools
       become: yes
