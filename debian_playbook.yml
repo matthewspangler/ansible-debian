@@ -14,11 +14,16 @@
   hosts: 127.0.0.1 
   connection: local
   tasks:
-    - name: Install custom rice dependencies
+    - name: Update apt cache
       become: yes
       become_method: enable
       apt:
         update_cache: yes
+
+    - name: Install custom rice dependencies
+      become: yes
+      become_method: enable
+      apt:
         name:
           - awesome
           - xinit
