@@ -5,10 +5,10 @@
 #	$ /usr/sbin/adduser <user> sudo
 #	$ reboot
 # 2) Install ansible and python dependencies:
-#	$ sudo apt install -y python python3-pip python3-apt
+#	$ sudo apt install -y python3 python3-pip python3-apt
 #	$ sudo pip3 install ansible
 # Then, to run the playbook, do:
-#	$ ansible-playbook <debian_playbook.yml --ask-become-pass>
+#	$ ansible-playbook <debian_playbook.yml> --ask-become-pass>
 
 - name: "Debian minimal workstation playbook"
   hosts: 127.0.0.1 
@@ -24,9 +24,6 @@
           - xinit
           - rofi
           - compton
-          - vim
-          - vim-nox
-          - vim-python
           - zsh
           - fonts-noto
           - fonts-noto-extra
@@ -46,12 +43,15 @@
           - xscreensaver
           - pasystray
 
-    - name: Install development tools:
+    - name: Install development tools
       become: yes
       become_method: enable
       apt:
         name:
           - git
+          - vim
+          - vim-nox
+          - vim-python
           - codeblocks
           - geany
           - tiled
@@ -63,7 +63,7 @@
           - mono-complete
           - build-essential
 
-    - name: Install software suite:
+    - name: Install software suite
       become: yes
       become_method: enable
       apt:
@@ -76,9 +76,6 @@
           - libreoffice
           - ranger
           - thunar
-          - vim
-          - vim-nox
-          - vim-python
           - weechat
           - grafx2
           - milkytracker
@@ -86,7 +83,7 @@
     - name: Install dotfiles
       shell: cd ~ && git clone https://github.com/matthewspangler/dotfiles && cd dotfiles && ./install
 
-    - name: Setup vim by running :PlugInstall
+    - name: Setup vim by running PlugInstall
       shell: vim  +PlugInstall +qall
 
     - name: Build youcompleteme

@@ -1,1 +1,3 @@
-My ansible playbook for setting up my Debian systems with my programming environment, favorite software, and custom rice.
+## Ansible playbook for my Debian workstations
+
+This playbook installs and configures my development environment, custom rice for AwesomeWM, and general software that I use on a day-to-day basis.
