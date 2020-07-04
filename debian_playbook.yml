@@ -98,7 +98,7 @@
       shell: vim  +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
 
     - name: Build youcompleteme
-      shell: cd ~/.vim/plugged/youcompleteme/ && python3 install.py --clang-completer --cs-completer
+      shell: ~/.vim/plugged/youcompleteme/python3 install.py --clang-completer --cs-completer
 
     - name: Setup zsh to be default shell
       shell: chsh -s $(which zsh)
