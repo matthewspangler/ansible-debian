@@ -64,6 +64,7 @@
           - python3
           - python3-pip
           - python3-jedi
+          - python3-dev
           - cmake
           - ctags
           - mono-complete
@@ -97,8 +98,15 @@
     - name: Setup vim by running PlugInstall
       shell: vim  +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
 
+    - name: Prepare youcompleteme for build
+      shell: git submodule update --init --recursive
+      args:
+        chdir: ~/vim/plugged/youcompleteme
+
     - name: Build youcompleteme
-      shell: ~/.vim/plugged/youcompleteme/python3 install.py --clang-completer --cs-completer
+      shell: python3 install.py --clang-completer --cs-completer
+      args:
+        chdir: ~/vim/plugged/youcompleteme
 
     - name: Setup zsh to be default shell
       shell: chsh -s $(which zsh)
